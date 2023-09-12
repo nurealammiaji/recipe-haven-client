@@ -7,13 +7,42 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Error from './components/Error/Error.jsx';
-import Providers from './Providers/Providers.jsx';
+import Providers from './components/Providers/Providers.jsx';
+import Home from './components/Home/Home.jsx';
+import Login from './components/Login/Login.jsx';
+import Register from './components/Register/Register.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     errorElement: <Error></Error>,
+    children: ([
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
+        path: "chefs",
+        element: <div className='text-2xl'>Chefs</div>
+      },
+      {
+        path: "cuisines",
+        element: <div className='text-2xl'>Cuisines</div>
+      },
+      {
+        path: "blog",
+        element: <div className='text-2xl'>Blog</div>
+      },
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: "register",
+        element: <Register></Register>
+      }
+    ])
   }
 ])
 
