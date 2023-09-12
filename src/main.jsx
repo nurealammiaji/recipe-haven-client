@@ -7,10 +7,10 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Error from './components/Error/Error.jsx';
-import Providers from './components/Providers/Providers.jsx';
 import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
+import Providers from './Providers/Providers.jsx';
 
 const router = createBrowserRouter([
   {
