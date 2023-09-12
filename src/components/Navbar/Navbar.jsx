@@ -38,8 +38,9 @@ const Navbar = () => {
                 </div>
                 <div className="absolute left-2 md:left-0 md:relative top-8 md:top-0">
                     {(user) ?
-                        <div>
-                            <Link to="/user"><HiUserCircle className="text-3xl" /></Link>
+                        <div className="md:flex">
+                            <Link to="/user"><HiUserCircle className="text-3xl tooltip" data-tip="User Name" /></Link>
+                            <Link to="/login"><button className="ml-2 btn btn-sm">Logout</button></Link>
                         </div> :
                         <div>
                             <Link to="/login"><button className="btn btn-sm">Login</button></Link>
