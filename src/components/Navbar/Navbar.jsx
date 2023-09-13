@@ -15,7 +15,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="flex items-center justify-between p-2 shadow">
+        <nav className="flex items-center justify-between p-2 shadow text-black bg-gray-200">
             <div>
                 <Link to="/"><img className="h-16" src={logo} alt="" /></Link>
             </div>
@@ -27,9 +27,6 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/chefs">Chefs</NavLink>
-                        </li>
-                        <li>
-                            <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/cuisines">Cuisines</NavLink>
                         </li>
                         <li>
                             <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/blog">Blog</NavLink>

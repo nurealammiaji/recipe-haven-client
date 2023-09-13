@@ -11,6 +11,7 @@ import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import Providers from './Providers/Providers.jsx';
+import Forgot from './components/Forgot/Forgot';
 
 const router = createBrowserRouter([
   {
@@ -27,10 +28,6 @@ const router = createBrowserRouter([
         element: <div className='text-2xl'>Chefs</div>
       },
       {
-        path: "cuisines",
-        element: <div className='text-2xl'>Cuisines</div>
-      },
-      {
         path: "blog",
         element: <div className='text-2xl'>Blog</div>
       },
@@ -41,8 +38,12 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
-      }
-    ])
+      },
+      {
+        path: "forgot",
+        element: <Forgot></Forgot>
+      },
+    ]),
   }
 ])
 
