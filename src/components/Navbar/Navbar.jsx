@@ -19,9 +19,9 @@ const Navbar = () => {
             <div>
                 <Link to="/"><img className="h-16" src={logo} alt="" /></Link>
             </div>
-            <div className={ isOpen ? "display relative" : "flex-row items-center hidden md:display md:flex"}>
+            <div className={ isOpen ? "display" : "flex-row items-center hidden md:display md:flex"}>
                 <div>
-                    <ul className="absolute left-2 md:left-0 top-16 md:top-0 md:relative flex-row md:flex [&>*]:p-3 font-semibold">
+                    <ul className="flex-row md:flex [&>*]:p-3 font-semibold">
                         <li>
                             <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/">Home</NavLink>
                         </li>
@@ -33,7 +33,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="absolute left-2 md:left-0 md:relative top-8 md:top-0">
+                <div>
                     {(user) ?
                         <div className="md:flex">
                             <Link to="/user"><HiUserCircle className="text-3xl tooltip" data-tip="User Name" /></Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
                     }
                 </div>
             </div>
-            <div onClick={toggleMenu} className="relative block display md:hidden">
+            <div onClick={toggleMenu} className="block display md:hidden">
                 {
                     (isOpen) ?
                     <button><HiXMark className="text-3xl" /></button> :

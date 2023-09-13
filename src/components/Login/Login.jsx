@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa6";
 
 const Login = () => {
 
-    const { login, googleLogin, githubLogin } = useContext(AuthContext);
+    const { emailLogin, googleLogin, githubLogin } = useContext(AuthContext);
 
     const [displayError, setDisplayError] = useState(null);
     const [displaySuccess, setDisplaySuccess] = useState(null);
@@ -20,7 +20,7 @@ const Login = () => {
             return;
         }
         else {
-            login(email, password)
+            emailLogin(email, password)
                 .then(result => {
                     const loggedUser = result.user;
                     setDisplaySuccess("Login Successful !!");
@@ -92,7 +92,7 @@ const Login = () => {
                                 </label>
                             </div>
                         </div>
-                        <div className="form-control mt-6">
+                        <div className="form-control mt-3">
                             <button type="submit" className="btn btn-primary">Login</button>
                         </div>
                         <br />

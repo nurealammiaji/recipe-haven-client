@@ -12,6 +12,8 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import Providers from './Providers/Providers.jsx';
 import Forgot from './components/Forgot/Forgot';
+import Chefs from './components/Chefs/Chefs.jsx';
+import Blog from './components/Blog/Blog.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,11 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "chefs",
-        element: <div className='text-2xl'>Chefs</div>
+        element: <Chefs></Chefs>
       },
       {
         path: "blog",
-        element: <div className='text-2xl'>Blog</div>
+        element: <Blog></Blog>
       },
       {
         path: "login",
