@@ -14,6 +14,8 @@ import Providers from './Providers/Providers.jsx';
 import Forgot from './components/Forgot/Forgot';
 import Chefs from './components/Chefs/Chefs.jsx';
 import Blog from './components/Blog/Blog.jsx';
+import ChefDetails from './components/ChefDetails/ChefDetails.jsx';
+import User from './components/User/User.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
         element: <Chefs></Chefs>
       },
       {
+        path: "chefs/:id",
+        element: <ChefDetails></ChefDetails>
+      },
+      {
         path: "blog",
         element: <Blog></Blog>
       },
@@ -40,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
+      },
+      {
+        path: "user",
+        element: <User></User>
       },
       {
         path: "forgot",

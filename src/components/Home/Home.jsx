@@ -3,7 +3,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import "./Home.css";
 import Slider1 from "../../assets/Slider-1.jpg";
 import Slider2 from "../../assets/Slider-2.jpg";
@@ -11,8 +11,12 @@ import Slider3 from "../../assets/Slider-3.jpg";
 import Slider4 from "../../assets/Slider-4.jpg";
 import Slider5 from "../../assets/Slider-5.jpg";
 import Slider6 from "../../assets/Slider-6.jpg";
+import { AuthContext } from '../../Providers/Providers';
+import Chef from '../Chef/Chef';
 
 const Home = () => {
+
+    const { chefs } = useContext(AuthContext);
 
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
@@ -51,9 +55,17 @@ const Home = () => {
                     <span ref={progressContent}></span>
                 </div>
             </Swiper>
+            <br /><br /><br />
             <div>
-                
+                <h1 className='text-4xl font-bold text-center divider'>Popular Chefs</h1>
+                <br /><br />
+                <div className='grid gap-10 md:grid-cols-3'>
+                    {
+                        chefs.map(chef => <Chef key={chef.id} chef={chef}></Chef>)
+                    }
+                </div>
             </div>
+            <br /><br /><br />
         </div>
     );
 };
