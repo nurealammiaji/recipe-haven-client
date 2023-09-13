@@ -1,6 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from '../Firebase/Firebase.config';
+import { data } from "autoprefixer";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -12,6 +13,8 @@ const Providers = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [recipes, setRecipes] = useState([]);
+    const [chefs, setChefs] = useState([]);
 
     const googleLogin = () => {
         setLoading(true);
@@ -48,8 +51,22 @@ const Providers = ({ children }) => {
         }
     }, [])
 
+    useEffect( () => {
+        fetch("https://recipe-haven-server-bd.vercel.app/chefs")
+        .then(res => res.json())
+        .then(data => setChefs(data))
+    }, [])
+
+    useEffect( () => {
+        fetch("https://recipe-haven-server-bd.vercel.app/recipes")
+        .then(res => res.json())
+        .then(data => setRecipes(data))
+    }, [])
+
     const authInfo = {
         user,
+        chefs,
+        recipes,
         loading,
         googleLogin,
         githubLogin,

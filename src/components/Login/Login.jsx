@@ -24,11 +24,13 @@ const Login = () => {
                 .then(result => {
                     const loggedUser = result.user;
                     setDisplaySuccess("Login Successful !!");
+                    setDisplayError(null);
                     console.log(loggedUser);
                 })
                 .catch(error => {
                     const errorMessage = error.message;
                     setDisplayError(errorMessage);
+                    setDisplaySuccess(null);
                 })
         }
     }
@@ -38,11 +40,13 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 setDisplaySuccess("Login Successful !!");
+                setDisplayError(null);
                 console.log(loggedUser);
             })
             .catch(error => {
                 const errorMessage = error.message;
                 setDisplayError(errorMessage);
+                setDisplaySuccess(null);
             })
     }
 
@@ -51,18 +55,20 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 setDisplaySuccess("Login Successful !!");
+                setDisplayError(null);
                 console.log(loggedUser);
             })
             .catch(error => {
                 const errorMessage = error.message;
                 setDisplayError(errorMessage);
+                setDisplaySuccess(null);
             })
     }
 
     return (
-        <div className="min-h-screen">
-            <div className="my-24">
-                <div className="card w-full max-w-sm mx-auto shadow-2xl">
+        <div className="min-h-screen bg-base-200">
+            <div className="py-24">
+                <div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100">
                     <form onSubmit={loginHandler} className="card-body">
                         {
                             (displayError) &&
@@ -83,28 +89,24 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                            <div className="flex justify-between items-center">
+                            <div className="flex items-center justify-between">
                                 <label className="label">
-                                    <Link to="/register" className="label-text-alt link link-hover">Need Account?</Link>
+                                    <Link to="/register" className="label-text-alt link link-hover">Need an account?</Link>
                                 </label>
                                 <label className="label">
                                     <Link to="/forgot" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                             </div>
                         </div>
-                        <div className="form-control mt-3">
+                        <div className="mt-3 form-control">
                             <button type="submit" className="btn btn-primary">Login</button>
                         </div>
                         <br />
-                        <p className="text-center italic">or</p>
+                        <p className="italic text-center divider">or</p>
                         <div className="form-control">
-                            <label className="label mx-auto">
-                                <span className="label-text text-lg font-semibold">Social Login</span>
-                            </label>
-                            <hr />
-                            <div className="flex justify-evenly mt-3">
-                                <button onClick={googleLoginHandler} className="btn btn-circle"><FaGoogle className="text-2xl" /></button>
-                                <button onClick={githubLoginHandler} className="btn btn-circle"><FaGithub className="text-2xl" /></button>
+                            <div className="flex justify-evenly">
+                                <button type="button" onClick={googleLoginHandler} className="btn btn-circle btn-primary"><FaGoogle className="text-2xl" /></button>
+                                <button type="button" onClick={githubLoginHandler} className="btn btn-circle btn-primary"><FaGithub className="text-2xl" /></button>
                             </div>
                         </div>
                     </form>

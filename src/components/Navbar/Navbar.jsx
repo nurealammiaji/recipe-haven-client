@@ -6,7 +6,7 @@ import { AuthContext } from "../../Providers/Providers";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -14,12 +14,22 @@ const Navbar = () => {
         console.log("Toggled");
     }
 
+    const logoutHandler = () => {
+        logout()
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
     return (
-        <nav className="flex items-center justify-between p-2 shadow text-black bg-gray-200">
+        <nav className="flex items-center justify-between p-2 shadow-lg text-base-content bg-base-300">
             <div>
                 <Link to="/"><img className="h-16" src={logo} alt="" /></Link>
             </div>
-            <div className={ isOpen ? "display" : "flex-row items-center hidden md:display md:flex"}>
+            <div className={isOpen ? "display" : "flex-row items-center hidden md:display md:flex"}>
                 <div>
                     <ul className="flex-row md:flex [&>*]:p-3 font-semibold">
                         <li>
@@ -36,11 +46,11 @@ const Navbar = () => {
                 <div>
                     {(user) ?
                         <div className="md:flex">
-                            <Link to="/user"><HiUserCircle className="text-3xl tooltip" data-tip="User Name" /></Link>
-                            <Link to="/login"><button className="ml-2 btn btn-sm">Logout</button></Link>
+                            <Link to="/user"><button className="ml-3 btn btn-sm btn-circle btn-primary tooltip" data-tip={user.displayName}><HiUserCircle className="text-3xl"  /></button></Link>
+                            <button onClick={logoutHandler} className="ml-3 btn btn-sm btn-primary">Logout</button>
                         </div> :
                         <div>
-                            <Link to="/login"><button className="btn btn-sm">Login</button></Link>
+                            <Link to="/login"><button className="ml-3 btn btn-sm btn-primary">Login</button></Link>
                         </div>
                     }
                 </div>
@@ -48,8 +58,8 @@ const Navbar = () => {
             <div onClick={toggleMenu} className="block display md:hidden">
                 {
                     (isOpen) ?
-                    <button><HiXMark className="text-3xl" /></button> :
-                    <button><HiBars3BottomRight className="text-3xl" /></button>
+                        <button><HiXMark className="text-3xl" /></button> :
+                        <button><HiBars3BottomRight className="text-3xl" /></button>
                 }
             </div>
         </nav>

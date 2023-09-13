@@ -36,9 +36,9 @@ const Register = () => {
     }
 
     return (
-        <div className="min-h-screen">
-            <div className="my-24">
-                <div className="card w-full max-w-sm mx-auto shadow-2xl">
+        <div className="min-h-screen bg-base-200">
+            <div className="py-24">
+                <div className="w-full max-w-sm mx-auto shadow-2xl card bg-base-100">
                     <form onSubmit={registerHandler} className="card-body">
                         {
                             (displayError) &&
@@ -75,7 +75,7 @@ const Register = () => {
                                 <Link to="/login" className="label-text-alt link link-hover">Have an account?</Link>
                             </label>
                         </div>
-                        <div className="form-control mt-3">
+                        <div className="mt-3 form-control">
                             <button type="submit" className="btn btn-primary">Register</button>
                         </div>
                     </form>
