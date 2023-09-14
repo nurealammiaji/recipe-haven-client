@@ -12,7 +12,6 @@ import Login from './components/Login/Login.jsx';
 import Register from './components/Register/Register.jsx';
 import Providers from './Providers/Providers.jsx';
 import Forgot from './components/Forgot/Forgot';
-import Chefs from './components/Chefs/Chefs.jsx';
 import Blog from './components/Blog/Blog.jsx';
 import ChefDetails from './components/ChefDetails/ChefDetails.jsx';
 import User from './components/User/User.jsx';
@@ -26,11 +25,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
-      },
-      {
-        path: "chefs",
-        element: <Chefs></Chefs>,
-        loader: () => fetch("https://recipe-haven-server-bd.vercel.app/chefs/")
       },
       {
         path: "chefs/:id",

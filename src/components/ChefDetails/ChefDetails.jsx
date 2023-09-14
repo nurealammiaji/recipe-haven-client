@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import details from "../../assets/details.jpg";
 import { useEffect, useState } from "react";
-import { PiCookingPotBold, PiThumbsUpLight, PiBowlFood, PiCalendar } from "react-icons/pi";
+import { PiCookingPotBold, PiThumbsUpLight, PiBowlFood, PiCalendar, PiHeartBold } from "react-icons/pi";
 
 const ChefDetails = () => {
 
@@ -22,14 +22,14 @@ const ChefDetails = () => {
         <div>
             <div>
                 <img className="relative w-auto md:min-w-full" src={details} alt="" />
-                <h1 className="absolute text-2xl translate-x-5 md:translate-x-40 md:text-6xl text-base-content top-36 md:top-60">Chef Details</h1>
+                <h1 className="absolute text-2xl text-white translate-x-5 md:translate-x-40 md:text-7xl top-36 md:top-60">Chef Recipes</h1>
             </div>
-            <br /><br />
+            <br /><br /><br />
             <div>
                 <div className="shadow-xl card lg:card-side bg-base-200">
-                    <figure><img className="w-full h-full" src={image} alt="Album" /></figure>
+                    <figure><img className="w-full h-full" src={image} alt="Chef Image" /></figure>
                     <div className="card-body">
-                        <h2 className="mb-5 text-5xl font-bold card-title">{name}</h2>
+                        <h2 className="mb-5 text-3xl font-bold md:text-5xl card-title">{name}</h2>
                         <br />
                         <div className="items-center justify-start card-actions">
                             Likes:
@@ -50,7 +50,49 @@ const ChefDetails = () => {
                     </div>
                 </div>
             </div>
+            <br /><br /><br />
+            <h3 className='text-4xl font-bold text-center divider'>Some Recepies of {name}</h3>
             <br /><br />
+            <div>
+                <div className="grid gap-10 md:grid-cols-3">
+                    {
+                        (chefRecipes) &&
+                        chefRecipes.map(recipe => <div key={recipe.id} className="w-full shadow-xl card bg-base-200">
+                            <figure><img className="w-full h-[250px]" src={recipe.image} alt="Recipe Image" /></figure>
+                            <div className="card-body">
+                                <h2 className="justify-center card-title">{recipe.name}</h2>
+                                <br />
+                                <div className="mx-auto my-3 badge badge-secondary"><PiCookingPotBold className="mr-2" /> {recipe.cuisine}</div>
+                                <br />
+                                <p className="text-base-content">{recipe.description}</p>
+                                <br />
+                                <div>
+                                    <h4 className="my-5 text-lg font-semibold underline">Ingredients:</h4>
+                                    <ul className="list-disc">
+                                        {
+                                            recipe.ingredients.slice(0, 5).map(indgredient => <li key={indgredient}>{indgredient}</li>)
+                                        }
+                                    </ul>
+                                </div>
+                                <br />
+                                <div>
+                                    <h4 className="my-5 text-lg font-semibold underline">Instructions:</h4>
+                                    <ul className="list-disc">
+                                        {
+                                            recipe.instructions.slice(0, 5).map(instruction => <li key={instruction}>{instruction.slice(0, 35)}...</li>)
+                                        }
+                                    </ul>
+                                </div>
+                                <br />
+                                <div className="mt-5 text-center">
+                                <button className="btn-sm btn btn-primary"><PiHeartBold className="text-xl" /> Favourite</button>
+                                </div>
+                            </div>
+                        </div>)
+                    }
+                </div>
+            </div>
+            <br /><br /><br />
         </div>
     );
 };

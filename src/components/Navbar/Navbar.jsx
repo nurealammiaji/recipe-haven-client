@@ -36,9 +36,6 @@ const Navbar = () => {
                             <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/chefs">Chefs</NavLink>
-                        </li>
-                        <li>
                             <NavLink className={({ isActive }) => isActive ? 'text-orange-600' : ''} to="/blog">Blog</NavLink>
                         </li>
                     </ul>
