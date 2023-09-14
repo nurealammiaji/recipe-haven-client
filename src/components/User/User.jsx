@@ -5,7 +5,7 @@ const User = () => {
 
     const { user } = useContext(AuthContext);
 
-    const { displayName, photoURL, email, emailVerified } = user;
+    const { displayName, photoURL, email, emailVerified, phoneNumber } = user;
 
     return (
         <div>
@@ -28,6 +28,10 @@ const User = () => {
                             <div className="items-center justify-start card-actions">
                                 Email Verified:
                                 <div className="badge badge-outline">{emailVerified}</div>
+                            </div>
+                            <div className="items-center justify-start card-actions">
+                                Phone Number:
+                                <div className="badge badge-outline">{phoneNumber}</div>
                             </div>
                         </div>
                     </div>
