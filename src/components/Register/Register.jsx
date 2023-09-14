@@ -19,6 +19,12 @@ const Register = () => {
         const password = form.password.value;
         if (name.length < 1 && photo.length < 1 && email.length < 1 && password.length < 1) {
             setDisplayError("Please fill the empty field !!");
+            setDisplaySuccess(null);
+            return;
+        }
+        else if (password.length < 6) {
+            setDisplayError("Password should be at least 6 characters");
+            setDisplaySuccess(null);
             return;
         }
         else {
@@ -26,11 +32,14 @@ const Register = () => {
                 .then(result => {
                     const loggedUser = result.user;
                     setDisplaySuccess("Registration Successful !!");
+                    setDisplayError(null);
                     console.log(loggedUser);
+                    form.reset();
                 })
                 .catch(error => {
                     const errorMessage = error.message;
                     setDisplayError(errorMessage);
+                    setDisplaySuccess(null);
                 })
         }
     }

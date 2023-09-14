@@ -29,11 +29,13 @@ const router = createBrowserRouter([
       },
       {
         path: "chefs",
-        element: <Chefs></Chefs>
+        element: <Chefs></Chefs>,
+        loader: () => fetch("https://recipe-haven-server-bd.vercel.app/chefs/")
       },
       {
         path: "chefs/:id",
-        element: <ChefDetails></ChefDetails>
+        element: <ChefDetails></ChefDetails>,
+        loader: ({ params }) => fetch(`https://recipe-haven-server-bd.vercel.app/chefs/${params.id}`)
       },
       {
         path: "blog",
