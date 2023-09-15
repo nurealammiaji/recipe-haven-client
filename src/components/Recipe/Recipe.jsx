@@ -1,0 +1,56 @@
+import { useState } from "react";
+import { PiCookingPotBold, PiHeartFill } from "react-icons/pi";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Recipe = ({ recipe }) => {
+
+    const { image, name, description, ingredients, instructions, cuisine } = recipe;
+
+    const [disable, setDisable] = useState();
+
+    const favourite = () => toast("Added as Favourite !!");
+
+    const disableHandler = () => {
+        setDisable(true);
+        favourite();
+    }
+
+    return (
+        <div className="w-full shadow-xl card bg-base-200">
+            <ToastContainer position="top-center" />
+            <figure><img className="w-full h-[250px]" src={image} alt="Recipe Image" /></figure>
+            <div className="card-body">
+                <h2 className="justify-center card-title">{name}</h2>
+                <br />
+                <div className="mx-auto my-3 badge badge-secondary"><PiCookingPotBold className="mr-2" /> {cuisine}</div>
+                <br />
+                <p className="text-base-content">{description}</p>
+                <br />
+                <div>
+                    <h4 className="my-5 text-lg font-semibold underline">Ingredients:</h4>
+                    <ul className="list-disc">
+                        {
+                            ingredients.slice(0, 5).map(indgredient => <li key={indgredient}>{indgredient}</li>)
+                        }
+                    </ul>
+                </div>
+                <br />
+                <div>
+                    <h4 className="my-5 text-lg font-semibold underline">Instructions:</h4>
+                    <ul className="list-disc">
+                        {
+                            instructions.slice(0, 5).map(instruction => <li key={instruction}>{instruction.slice(0, 35)}...</li>)
+                        }
+                    </ul>
+                </div>
+                <br />
+                <div className="mt-5 text-center">
+                    <button className="btn-sm btn btn-primary" onClick={() => disableHandler()} disabled={disable}><PiHeartFill className="text-xl text-red-700" /> Favourite</button>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Recipe;

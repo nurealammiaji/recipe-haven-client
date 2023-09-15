@@ -1,7 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import details from "../../assets/details.jpg";
 import { useEffect, useState } from "react";
-import { PiCookingPotBold, PiThumbsUpLight, PiBowlFood, PiCalendar, PiHeartBold } from "react-icons/pi";
+import Recipe from "../Recipe/Recipe";
+import { PiCookingPotBold, PiThumbsUpLight, PiBowlFood, PiCalendar } from "react-icons/pi";
 
 const ChefDetails = () => {
 
@@ -51,44 +52,13 @@ const ChefDetails = () => {
                 </div>
             </div>
             <br /><br /><br />
-            <h3 className='text-4xl font-bold text-center divider'>Some Recepies of {name}</h3>
+            <h3 className='font-bold text-center text-md md:text-4xl divider'>Some Recepies of {name}</h3>
             <br /><br />
             <div>
                 <div className="grid gap-10 md:grid-cols-3">
                     {
                         (chefRecipes) &&
-                        chefRecipes.map(recipe => <div key={recipe.id} className="w-full shadow-xl card bg-base-200">
-                            <figure><img className="w-full h-[250px]" src={recipe.image} alt="Recipe Image" /></figure>
-                            <div className="card-body">
-                                <h2 className="justify-center card-title">{recipe.name}</h2>
-                                <br />
-                                <div className="mx-auto my-3 badge badge-secondary"><PiCookingPotBold className="mr-2" /> {recipe.cuisine}</div>
-                                <br />
-                                <p className="text-base-content">{recipe.description}</p>
-                                <br />
-                                <div>
-                                    <h4 className="my-5 text-lg font-semibold underline">Ingredients:</h4>
-                                    <ul className="list-disc">
-                                        {
-                                            recipe.ingredients.slice(0, 5).map(indgredient => <li key={indgredient}>{indgredient}</li>)
-                                        }
-                                    </ul>
-                                </div>
-                                <br />
-                                <div>
-                                    <h4 className="my-5 text-lg font-semibold underline">Instructions:</h4>
-                                    <ul className="list-disc">
-                                        {
-                                            recipe.instructions.slice(0, 5).map(instruction => <li key={instruction}>{instruction.slice(0, 35)}...</li>)
-                                        }
-                                    </ul>
-                                </div>
-                                <br />
-                                <div className="mt-5 text-center">
-                                <button className="btn-sm btn btn-primary"><PiHeartBold className="text-xl" /> Favourite</button>
-                                </div>
-                            </div>
-                        </div>)
+                        chefRecipes.map(recipe => <Recipe key={recipe.id} recipe={recipe}></Recipe> )
                     }
                 </div>
             </div>

@@ -6,7 +6,6 @@ const Chef = ({ chef }) => {
     const { id, name, image, cuisine, likes, recipes, experience } = chef;
 
     return (
-        <div>
             <div className="w-full shadow-xl card bg-base-200">
                 <figure><img src={image} alt="Chef Image" /></figure>
                 <div className="card-body">
@@ -31,7 +30,6 @@ const Chef = ({ chef }) => {
                     <Link to={`/chefs/${id}`}><button className="w-full mx-auto btn btn-primary">View Recipes</button></Link>
                 </div>
             </div>
-        </div>
     );
 };
 
