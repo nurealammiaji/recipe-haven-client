@@ -9,11 +9,11 @@ const Recipe = ({ recipe }) => {
 
     const [disable, setDisable] = useState();
 
-    const favourite = () => toast("Added as Favourite !!");
+    const favorite = (dish) => toast(`${dish} added as favorite !!`);
 
-    const disableHandler = () => {
+    const handler = (dish) => {
         setDisable(true);
-        favourite();
+        favorite(dish);
     }
 
     return (
@@ -46,7 +46,7 @@ const Recipe = ({ recipe }) => {
                 </div>
                 <br />
                 <div className="mt-5 text-center">
-                    <button className="btn-sm btn btn-primary" onClick={() => disableHandler()} disabled={disable}><PiHeartFill className="text-xl text-red-700" /> Favourite</button>
+                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="text-xl text-red-700" /> Favourite</button>
                 </div>
             </div>
         </div>

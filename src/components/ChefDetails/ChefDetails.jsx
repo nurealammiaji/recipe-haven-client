@@ -1,10 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import details from "../../assets/details.jpg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Recipe from "../Recipe/Recipe";
 import { PiCookingPotBold, PiThumbsUpLight, PiBowlFood, PiCalendar } from "react-icons/pi";
+import { AuthContext } from '../../Providers/Providers';
 
 const ChefDetails = () => {
+
+    const { loading } = useContext(AuthContext);
 
     const chef = useLoaderData();
     const { id, name, image, cuisine, likes, recipes, experience, bio } = chef;
@@ -57,8 +60,16 @@ const ChefDetails = () => {
             <div>
                 <div className="grid gap-10 md:grid-cols-3">
                     {
-                        (chefRecipes) &&
-                        chefRecipes.map(recipe => <Recipe key={recipe.id} recipe={recipe}></Recipe> )
+                        (loading) ?
+                            <div>
+                                <br /><br />
+                                <span className="block loading loading-ring loading-lg text-primary"></span>
+                                <br /><br />
+                                <h3 className="text-2xl text-primary">Loading <span className="ml-3 loading loading-dots loading-md text-primary"></span></h3>
+                                <br /><br />
+                            </div> :
+                            (chefRecipes) &&
+                            chefRecipes.map(recipe => <Recipe key={recipe.id} recipe={recipe}></Recipe>)
                     }
                 </div>
             </div>

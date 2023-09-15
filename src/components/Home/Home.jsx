@@ -3,7 +3,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import "./Home.css";
 import Slider1 from "../../assets/Slider-1.jpg";
 import Slider2 from "../../assets/Slider-2.jpg";
@@ -16,7 +16,7 @@ import Chef from '../Chef/Chef';
 
 const Home = () => {
 
-    const { chefs } = useContext(AuthContext);
+    const { chefs, loading } = useContext(AuthContext);
 
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
@@ -61,7 +61,15 @@ const Home = () => {
                 <br /><br />
                 <div className='grid gap-10 md:grid-cols-3'>
                     {
-                        chefs.map(chef => <Chef key={chef.id} chef={chef}></Chef>)
+                        (loading) ?
+                            <div className="text-center">
+                                <br /><br />
+                                <span className="loading loading-ring loading-lg text-primary"></span>
+                                <br /><br />
+                                <h3 className="text-2xl text-primary">Loading <span className="ml-3 loading loading-dots loading-md text-primary"></span></h3>
+                                <br /><br />
+                            </div> :
+                            chefs.map(chef => <Chef key={chef.id} chef={chef}></Chef>)
                     }
                 </div>
             </div>

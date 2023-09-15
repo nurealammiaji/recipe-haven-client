@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/Providers";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -9,6 +10,8 @@ const Register = () => {
 
     const [displayError, setDisplayError] = useState(null);
     const [displaySuccess, setDisplaySuccess] = useState(null);
+
+    const navigate = useNavigate();
 
     const registerHandler = (event) => {
         event.preventDefault();
@@ -31,8 +34,19 @@ const Register = () => {
             emailRegister(email, password)
                 .then(result => {
                     const loggedUser = result.user;
+                    updateProfile(loggedUser, {
+                        displayName: name,
+                        photoURL: photo,
+                    })
+                    .then(result => {
+                        console.log(result);
+                    })
+                    .catch(error => {
+                        console.log(error.message);
+                    })
                     setDisplaySuccess("Registration Successful !!");
                     setDisplayError(null);
+                    navigate("/", {replace: true});
                     console.log(loggedUser);
                     form.reset();
                 })

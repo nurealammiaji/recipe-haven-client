@@ -43,7 +43,7 @@ const Navbar = () => {
                 <div>
                     {(user) ?
                         <div className="md:flex">
-                            <Link to="/user"><button className="ml-3 btn btn-sm btn-circle btn-primary tooltip" data-tip={user.displayName ? user.displayName : user.email}><HiUserCircle className="text-3xl"  /></button></Link>
+                            <Link to="/user"><button className="ml-3 btn btn-sm btn-circle btn-primary tooltip" data-tip={user ? user.displayName : user.email}><HiUserCircle className="text-3xl"  /></button></Link>
                             <button onClick={logoutHandler} className="ml-3 btn btn-sm btn-primary">Logout</button>
                         </div> :
                         <div>

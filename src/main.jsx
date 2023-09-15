@@ -15,6 +15,7 @@ import Forgot from './components/Forgot/Forgot';
 import Blog from './components/Blog/Blog.jsx';
 import ChefDetails from './components/ChefDetails/ChefDetails.jsx';
 import User from './components/User/User.jsx';
+import Private from './Private/Private.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "chefs/:id",
-        element: <ChefDetails></ChefDetails>,
+        element: <Private><ChefDetails></ChefDetails></Private>,
         loader: ({ params }) => fetch(`https://recipe-haven-server-bd.vercel.app/chefs/${params.id}`)
       },
       {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "user",
-        element: <User></User>
+        element: <Private><User></User></Private>
       },
       {
         path: "forgot",

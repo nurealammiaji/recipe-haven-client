@@ -1,14 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/Providers";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa6";
 
 const Login = () => {
 
-    const { emailLogin, googleLogin, githubLogin } = useContext(AuthContext);
+    const { emailLogin, googleLogin, githubLogin} = useContext(AuthContext);
 
     const [displayError, setDisplayError] = useState(null);
     const [displaySuccess, setDisplaySuccess] = useState(null);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || "/";
 
     const loginHandler = (event) => {
         event.preventDefault();
@@ -25,6 +29,7 @@ const Login = () => {
                     const loggedUser = result.user;
                     setDisplaySuccess("Login Successful !!");
                     setDisplayError(null);
+                    navigate(from, {replace: true});
                     console.log(loggedUser);
                 })
                 .catch(error => {
@@ -41,6 +46,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 setDisplaySuccess("Login Successful !!");
                 setDisplayError(null);
+                navigate(from, {replace: true});
                 console.log(loggedUser);
             })
             .catch(error => {
@@ -56,6 +62,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 setDisplaySuccess("Login Successful !!");
                 setDisplayError(null);
+                navigate(from, {replace: true});
                 console.log(loggedUser);
             })
             .catch(error => {
