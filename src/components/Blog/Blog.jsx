@@ -14,7 +14,6 @@ const Blog = () => {
     const { loading } = useContext(AuthContext);
 
     const posts = useLoaderData();
-    console.log(posts);
 
     return (
         <div ref={targetRef} className="min-h-screen">
