@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Recipe from "../Recipe/Recipe";
 import { PiCookingPotBold, PiThumbsUpLight, PiBowlFood, PiCalendar } from "react-icons/pi";
 import { AuthContext } from '../../Providers/Providers';
+import LazyLoad from "react-lazy-load";
 
 const ChefDetails = () => {
 
@@ -23,7 +24,9 @@ const ChefDetails = () => {
     return (
         <div>
             <div>
+                <LazyLoad threshold={0.99}>
                 <img className="relative w-auto md:min-w-full" src={details} alt="" />
+                </LazyLoad>
                 <h1 className="absolute hidden text-2xl text-white translate-x-5 md:translate-x-40 md:text-7xl top-36 md:top-60 md:block">Chef Recipes</h1>
             </div>
             <br /><br /><br />

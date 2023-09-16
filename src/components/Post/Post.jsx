@@ -8,9 +8,9 @@ const Post = ({ post }) => {
         <div>
             <div className="w-full h-full mx-auto border shadow-xl border-base card bg-base-200">
                 <div className="card-body">
-                    <h2 className="text-2xl underline card-title underline-offset-8 text-primary">{title}</h2>
+                    <h2 className="mx-auto text-2xl underline card-title underline-offset-8 text-primary">{title}</h2>
                     <br /><br />
-                    <div className="items-center justify-start card-actions">
+                    <div className="items-center justify-start mt-5 card-actions">
                         <p className="text-xl text-base-content">{details}</p>
                     </div>
                 </div>

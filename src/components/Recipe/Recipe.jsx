@@ -54,7 +54,7 @@ const Recipe = ({ recipe }) => {
                 <br />
                 <div className="flex items-center gap-2 mx-auto mt-5 text-center">
                     <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="hidden text-xl md:block" /> View</button></Link>
-                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="hidden text-xl text-red-600 md:block" /> Favorite</button>
+                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}>Favorite <PiHeartFill className="hidden text-xl md:block" /></button>
                 </div>
             </div>
         </div>
