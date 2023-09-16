@@ -14,6 +14,7 @@ import Slider6 from "../../assets/Slider-6.jpg";
 import { AuthContext } from '../../Providers/Providers';
 import Chef from '../Chef/Chef';
 import Popular from '../Popular/Popular';
+import LazyLoad from 'react-lazy-load';
 
 const Home = () => {
 
@@ -81,6 +82,31 @@ const Home = () => {
                 {
                     recipes.slice(0, 9).map(recipe => <Popular key={recipe.id} recipe={recipe}></Popular>)
                 }
+            </div>
+            <br /><br /><br />
+            <div className="hero bg-base-200">
+                <div className="grid gap-10 md:grid-cols-2">
+                    <div>
+                        <LazyLoad threshold={0.99}>
+                            <img src={Slider3} className="shadow-2xl" />
+                        </LazyLoad>
+                    </div>
+                    <div className='my-auto'>
+                        <div>
+                            <h3 className="text-2xl font-bold text-primary">Newsletter</h3>
+                            <br /><br />
+                            <fieldset className="w-10/12 form-control">
+                                <label className="label">
+                                    <span className="mb-2 label-text">Stay tuned for delicious recipes</span>
+                                </label>
+                                <div className="relative">
+                                    <input type="email" required placeholder="Enter your email address" className="w-full pr-16 input input-bordered" />
+                                    <button className="absolute top-0 right-0 rounded-l-none btn btn-primary">Subscribe</button>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
             </div>
             <br /><br /><br />
         </div>
