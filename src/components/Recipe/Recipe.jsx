@@ -2,6 +2,7 @@ import { useState } from "react";
 import { PiCookingPotBold, PiHeartFill } from "react-icons/pi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Rating } from '@smastrom/react-rating';
 
 const Recipe = ({ recipe }) => {
 
@@ -45,14 +46,13 @@ const Recipe = ({ recipe }) => {
                     </ul>
                 </div>
                 <br />
-                <div>
-                    <h4 className="my-5 text-lg"><span className="font-semibold">Ratings:</span> {(ratings)&& ratings}
-                    </h4>
-
+                <div className="flex items-center gap-5">
+                    <h4 className="my-5 text-lg font-semibold">Ratings:</h4>
+                    <h4><Rating style={{ maxWidth: 80 }} value={(ratings) && ratings} readOnly /></h4>
                 </div>
                 <br />
                 <div className="mt-5 text-center">
-                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="text-xl text-red-700" /> Favourite</button>
+                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="text-xl text-red-600" /> Favorite</button>
                 </div>
             </div>
         </div>
