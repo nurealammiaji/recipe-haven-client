@@ -21,11 +21,11 @@ const User = () => {
                     (user) &&
                     <div className="min-h-screen">
                         <br /><br /><br />
-                        <div className="mx-auto border shadow-xl border-base w-96 card bg-base-200">
+                        <div className="w-full mx-auto my-auto border shadow-xl md:w-96 border-base card bg-base-200">
                             <figure><img className="py-5" src={photoURL} alt="User Image" /></figure>
                             <div className="card-body">
                                 <h2 className="card-title">
-                                    {(displayName) ? displayName : "Name: Not Found"}
+                                    Name: {(displayName) ? displayName : "Not Found"}
                                     <div className="badge badge-secondary">online</div>
                                 </h2>
                                 <br /><br />

@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Recipe = ({ recipe }) => {
 
-    const { image, name, description, ingredients, instructions, cuisine } = recipe;
+    const { image, name, description, ingredients, instructions, cuisine, ratings } = recipe;
 
     const [disable, setDisable] = useState();
 
@@ -43,6 +43,12 @@ const Recipe = ({ recipe }) => {
                             instructions.slice(0, 5).map(instruction => <li key={instruction}>{instruction.slice(0, 35)}...</li>)
                         }
                     </ul>
+                </div>
+                <br />
+                <div>
+                    <h4 className="my-5 text-lg"><span className="font-semibold">Ratings:</span> {(ratings)&& ratings}
+                    </h4>
+
                 </div>
                 <br />
                 <div className="mt-5 text-center">
