@@ -11,7 +11,6 @@ const Navbar = () => {
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-        console.log("Toggled");
     }
 
     const logoutHandler = () => {

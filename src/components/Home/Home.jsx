@@ -13,10 +13,11 @@ import Slider5 from "../../assets/Slider-5.jpg";
 import Slider6 from "../../assets/Slider-6.jpg";
 import { AuthContext } from '../../Providers/Providers';
 import Chef from '../Chef/Chef';
+import Popular from '../Popular/Popular';
 
 const Home = () => {
 
-    const { chefs, loading } = useContext(AuthContext);
+    const { chefs, recipes, loading } = useContext(AuthContext);
 
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
@@ -72,6 +73,14 @@ const Home = () => {
                             chefs.map(chef => <Chef key={chef.id} chef={chef}></Chef>)
                     }
                 </div>
+            </div>
+            <br /><br /><br />
+            <h1 className='text-4xl font-bold text-center divider'>Popular Recipes</h1>
+            <br /><br />
+            <div className='grid gap-10 md:grid-cols-3'>
+                {
+                    recipes.slice(0, 9).map(recipe => <Popular key={recipe.id} recipe={recipe}></Popular>)
+                }
             </div>
             <br /><br /><br />
         </div>

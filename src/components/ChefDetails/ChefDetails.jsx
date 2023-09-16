@@ -20,13 +20,11 @@ const ChefDetails = () => {
             .then(data => setChefRecipes(data))
     }, [id])
 
-    console.log(chefRecipes);
-
     return (
         <div>
             <div>
                 <img className="relative w-auto md:min-w-full" src={details} alt="" />
-                <h1 className="absolute text-2xl text-white translate-x-5 md:translate-x-40 md:text-7xl top-36 md:top-60">Chef Recipes</h1>
+                <h1 className="absolute hidden text-2xl text-white translate-x-5 md:translate-x-40 md:text-7xl top-36 md:top-60 md:block">Chef Recipes</h1>
             </div>
             <br /><br /><br />
             <div>

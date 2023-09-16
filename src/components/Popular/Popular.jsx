@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { PiCookingPotBold, PiHeartFill } from "react-icons/pi";
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Rating } from '@smastrom/react-rating';
+import { PiCookingPotBold, PiHeartFill } from "react-icons/pi";
 
-const Recipe = ({ recipe }) => {
+const Popular = ({ recipe }) => {
 
-    const { image, name, description, ingredients, instructions, cuisine, ratings } = recipe;
+    const { image, name, description, ingredients, cuisine, ratings } = recipe;
 
     const [disable, setDisable] = useState();
 
@@ -37,14 +37,6 @@ const Recipe = ({ recipe }) => {
                     </ul>
                 </div>
                 <br />
-                <div>
-                    <h4 className="my-5 text-lg font-semibold underline">Instructions:</h4>
-                    <ul className="list-disc">
-                        {
-                            instructions.slice(0, 5).map(instruction => <li key={instruction}>{instruction.slice(0, 35)}...</li>)
-                        }
-                    </ul>
-                </div>
                 <br />
                 <div className="flex items-center gap-5">
                     <h4 className="my-5 text-lg font-semibold">Ratings:</h4>
@@ -59,4 +51,4 @@ const Recipe = ({ recipe }) => {
     );
 };
 
-export default Recipe;
+export default Popular;
