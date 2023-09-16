@@ -5,8 +5,11 @@ import { AuthContext } from "../../Providers/Providers";
 import LazyLoad from "react-lazy-load";
 import details from "../../assets/details.jpg";
 import { PiArrowCircleDownFill } from "react-icons/pi";
+import { usePDF } from 'react-to-pdf';
 
 const Blog = () => {
+
+    const { toPDF, targetRef } = usePDF({ filename: 'blog.pdf' });
 
     const { loading } = useContext(AuthContext);
 
@@ -14,14 +17,14 @@ const Blog = () => {
     console.log(posts);
 
     return (
-        <div className="min-h-screen">
+        <div ref={targetRef} className="min-h-screen">
             <div>
                 <LazyLoad threshold={0.99}><img className="relative w-auto md:min-w-full" src={details} alt="" /></LazyLoad>
                 <h1 className="absolute hidden text-2xl text-white translate-x-5 md:translate-x-40 md:text-7xl top-36 md:top-60 md:block">Blog</h1>
             </div>
             <br /><br /><br />
             <div className="text-center">
-                <button className="btn btn-primary"><PiArrowCircleDownFill className="text-3xl" /> Blog as PDF</button>
+                <button onClick={() => toPDF()} className="btn btn-primary"><PiArrowCircleDownFill className="text-3xl" /> Blog as PDF</button>
             </div>
             <br /><br />
             {
