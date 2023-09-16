@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { PiCookingPotBold, PiHeartFill } from "react-icons/pi";
+import { PiCookingPotBold, PiEyeFill, PiHeartFill } from "react-icons/pi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Rating } from '@smastrom/react-rating';
+import { Link } from "react-router-dom";
 
 const Recipe = ({ recipe }) => {
 
-    const { image, name, description, ingredients, instructions, cuisine, ratings } = recipe;
+    const { id, image, name, description, ingredients, instructions, cuisine, ratings } = recipe;
 
     const [disable, setDisable] = useState();
 
@@ -51,7 +52,8 @@ const Recipe = ({ recipe }) => {
                     <h4><Rating style={{ maxWidth: 80 }} value={(ratings) && ratings} readOnly /></h4>
                 </div>
                 <br />
-                <div className="mt-5 text-center">
+                <div className="flex items-center gap-2 mx-auto mt-5 text-center">
+                    <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="text-xl" /> View</button></Link>
                     <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="text-xl text-red-600" /> Favorite</button>
                 </div>
             </div>

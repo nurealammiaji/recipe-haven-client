@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Rating } from '@smastrom/react-rating';
-import { PiCookingPotBold, PiHeartFill } from "react-icons/pi";
+import { PiCookingPotBold, PiEyeFill, PiThumbsUpFill } from "react-icons/pi";
+import { Link } from 'react-router-dom';
 
 const Popular = ({ recipe }) => {
 
-    const { image, name, description, ingredients, cuisine, ratings } = recipe;
+    const { id, image, name, description, cuisine, ratings } = recipe;
 
     const [disable, setDisable] = useState();
 
-    const favorite = (dish) => toast(`${dish} added as favorite !!`);
+    const favorite = (dish) => toast(`You Liked ${dish} !!`);
 
     const handler = (dish) => {
         setDisable(true);
@@ -28,23 +29,14 @@ const Popular = ({ recipe }) => {
                 <br />
                 <p className="text-base-content">{description}</p>
                 <br />
-                <div>
-                    <h4 className="my-5 text-lg font-semibold underline">Ingredients:</h4>
-                    <ul className="list-disc">
-                        {
-                            ingredients.slice(0, 5).map(indgredient => <li key={indgredient}>{indgredient}</li>)
-                        }
-                    </ul>
-                </div>
-                <br />
-                <br />
                 <div className="flex items-center gap-5">
                     <h4 className="my-5 text-lg font-semibold">Ratings:</h4>
                     <h4><Rating style={{ maxWidth: 80 }} value={(ratings) && ratings} readOnly /></h4>
                 </div>
                 <br />
-                <div className="mt-5 text-center">
-                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="text-xl text-red-600" /> Favorite</button>
+                <div className="flex items-center gap-5 mx-auto mt-5 text-center">
+                    <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="text-xl" /> View</button></Link>
+                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}>Like <PiThumbsUpFill className="text-xl" /></button>
                 </div>
             </div>
         </div>
