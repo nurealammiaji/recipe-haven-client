@@ -34,7 +34,8 @@ const router = createBrowserRouter([
       },
       {
         path: "blog",
-        element: <Blog></Blog>
+        element: <Blog></Blog>,
+        loader: () => fetch("https://recipe-haven-server-bd.vercel.app/blog")
       },
       {
         path: "login",
