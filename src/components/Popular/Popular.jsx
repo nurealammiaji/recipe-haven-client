@@ -35,8 +35,8 @@ const Popular = ({ recipe }) => {
                 </div>
                 <br />
                 <div className="flex items-center gap-5 mx-auto mt-5 text-center">
-                    <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="text-xl" /> View</button></Link>
-                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}>Like <PiThumbsUpFill className="text-xl" /></button>
+                    <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="hidden text-xl md:block" /> View</button></Link>
+                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}>Like <PiThumbsUpFill className="hidden text-xl md:block" /></button>
                 </div>
             </div>
         </div>

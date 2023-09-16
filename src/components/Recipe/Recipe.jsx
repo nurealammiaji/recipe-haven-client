@@ -53,8 +53,8 @@ const Recipe = ({ recipe }) => {
                 </div>
                 <br />
                 <div className="flex items-center gap-2 mx-auto mt-5 text-center">
-                    <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="text-xl" /> View</button></Link>
-                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="text-xl text-red-600" /> Favorite</button>
+                    <Link to={`/recipes/${id}`}><button className="btn-sm btn btn-primary"><PiEyeFill className="hidden text-xl md:block" /> View</button></Link>
+                    <button className="btn-sm btn btn-primary" onClick={() => handler(name)} disabled={disable}><PiHeartFill className="hidden text-xl text-red-600 md:block" /> Favorite</button>
                 </div>
             </div>
         </div>
